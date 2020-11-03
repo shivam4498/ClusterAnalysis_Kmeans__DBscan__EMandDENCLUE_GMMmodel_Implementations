@@ -1,0 +1,228 @@
+Problem-1
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+Dataset-1 (IrisDataset) Algorithms Analysis:
+***************************************************************************************************************************************************************
+*******************************************************************************************************************
+K-means Algorithms:
+---------------------------
+Optimisation-1(Number of Clusters-K): As we know if we increase the number of clusters the Accuracy will definatly increase.But i always want to represent 
+my large dataset with the minimum number of clusters as better as possible.
+I done an experient over the K-means Algorithm where i compute the accuracy for the different increasing value of K.
+when i draw the graph between accuracy and the number of clusters i found after a certain point my slope is not increasing by a effective number means my accuracy 
+is conversing as i am increasing the number of cluster.
+for the value of K where i am getting Accuracy(k)-Accuracy(K-1)<=epsilon will be my optimise K value to represent my datasetset with a effective accuracy that i 
+have minimum requirement to represent mydataset.
+Note: Used Classification Error to compute the Accuracy!
+
+...............................................................................
+Experiment:
+Number of cluster(k):    Accuracy(in%)
+        1                33.3333%
+        2                67.6667%
+        3                88.6667%
+        4                88.8889%
+        5                88.8889%
+        60               97.7778%
+As i see it converges for K=3 at Accuracy 88.6667% and SSE=78.9451
+.....
+.......FinalParameters....................................
+Epsilon=0.0001 (Difference that i want to get between the currenmean and the previousmean to converge)
+Total no of iterations to converge: 12
+Final mean values: 
+Cluster-1[ 6.85385 3.07692 5.71538 2.05385 ]
+Cluster-2[ 5.88361 2.74098 4.38852 1.43443 ]
+Cluster-3[ 5.006 3.418 1.464 0.244 ]
+Total Classification Error points: 17
+Accuracy: 88.6667%
+For the 3 Number of cluster total SSE: 78.9451
+...............................................................
+
+
+
+DB-Scan Algorithm
+-----------------------------------
+Optimisation:
+As we know we can'nt controll the number of clusters in this Algo as it depends only for the radious or the volume that i want to be together the points within a range  as a corepoint
+of given parameter for a give value of minpoints(condition required for the core point).
+As i decrease the range,my number of clusters will increase if clusters are not increasing than defenatly there will be more noise points(points those are not assigned to any cluster).
+(i can vary my number of cluster by changing into value of minpoints(condition required for the core point) but it will not much effective as i can see number my clusters
+will not be change with a large slope/difference)
+..................................................................................
+
+
+
+
+
+
+Comparison between the K-means and DB-scan:
+-----------------------------------------------------------------------
+To compare the K-means and DBScan first i done an experiment on the DBScan to get the Number of clusters=Number of optimise clusters in K-Means (Here=3)
+K-means:
+*********************************
+Epsilon=0.0001 (Difference that i want to get between the currenmean and the previousmean to converge)
+Total no of iterations to converge: 12
+Final mean values: 
+Cluster-1[ 6.85385 3.07692 5.71538 2.05385 ]
+Cluster-2[ 5.88361 2.74098 4.38852 1.43443 ]
+Cluster-3[ 5.006 3.418 1.464 0.244 ]
+Total Classification Error points: 17
+Accuracy: 88.6667%
+For the 3 Number of cluster total SSE: 78.9451
+----------------------------------------------------------------------------------------------------------
+DB-Scan:
+*********************************
+Total Sample points: 150
+Total Core-Points for Range 0.6 are: 141
+Total Border-Points are: 1
+Total Noise-Points are: 5
+Total duplicate points: 3
+Total Clusters: 3
+Total Classification Error points: 45
+Accuracy: 64.6667%
+--------------------------------------------------------------
+Note: I can represent my irisdataset better by K-Means clustering with more Accuracy( K-Means: 88.667% , DB-Scan: 64.6667%), than the DBScan.
+Because i can represent it best with the convex shape Cluster . 
+
+
+
+
+Dataset2:(Please go through first Dataset2.image file in the folder to preview the dataset distribution)
+********************************************************************************************************************
+*********************************************************************************************************************
+Experiment:
+Number of cluster(k):    Accuracy(in%)
+        1                51.2987%
+        2                71.2987%
+        3                80.9091%
+        4                98.1818%
+As i see it converges for K=2 at Accuracy 71.2987% and SSE=1017.18
+
+
+Comparison between the K-means and DB-scan:
+-----------------------------------------------------------------------
+K-means:
+*************************
+Total no of iterations: 20
+Final mean values:
+Cluster-1[ 0.116785 -0.342683 ]
+Cluster-2[ -0.370382 1.33811 ]
+Total Classification Error points: 221
+Accuracy: 71.2987%
+For the 2 Number of cluster total SSE: 1017.18
+-----------------------------------------------------------
+DB-Scan:
+*******************************************
+minpoints 4 (Assume given)
+Total Sample points: 770
+Total Core-Points for Range 0.5 are: 758
+Total Border-Points are: 0
+Total Noise-Points are: 12
+Total duplicate points: 0
+Total Clusters: 2
+Total Classification Error points: 0
+Accuracy: 98.4416%
+---------------------------------------------
+Note: I can represent my Dataset2 better by DB-Scan with more Accuracy( K-Means: 71.2987%, DB-Scan: 98.4416%), than the K-means Clustering .
+Because i can represent it best with the Concave shape cluster. 
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+
+
+
+
+
+
+
+
+
+
+Problem-2:
+(See the Estimate probability density graph in irisdataset folder for both the Algorithm)
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+
+Dataset-1 (IrisDataset) Algorithms Analysis: 
+***************************************************************************************************************************************************************
+*******************************************************************************************************************
+Assume: minesp = 0.001(my epsilon difference required to coverge mean and premean)
+No of Cluster for EM-Algo = 3 (optimised number of clusters got by the K-Means Algo in first Experiment)
+Expectation Maximization final parameters:.....................................
+
+Total number of itearations to converge: 13
+Final parameters for the each-3 Clusters
+*****************************
+Cluster-1
+Mean.......
+[1.4795261310486847, 0.03220507723726887]
+Covariance Matrics.........
+[1.1881760946197961, 0.4172604457005873]
+[0.4172604457005873, 0.26956016817693124]
+Probability......
+0.24793354402517645
+*****************************
+Cluster-2
+Mean.......
+[1.2261607225251057, -0.17074193851554528]
+Covariance Matrics.........
+[0.9295539545487289, 0.29012921937417113]
+[0.29012921937417113, 0.1854659456212699]
+Probability......
+0.41873851753704633
+*****************************
+Cluster-3
+Mean.......
+[-2.640837382208806, 0.19053760563252395]
+Covariance Matrics.........
+[0.04777046849619882, 0.055904964028418914]
+[0.055904964028418914, 0.21470743974738496]
+Probability......
+0.3333279384377772
+***************************************************************************
+
+
+
+Dataset2:(Please go through first Dataset2.image file in the folder to preview the dataset distribution)
+********************************************************************************************************************
+*********************************************************************************************************************
+Assume: minesp = 0.001(my epsilon difference required to coverge mean and premean)
+No of Cluster for EM-Algo = 2 (optimised number of clusters got by the K-Means Algo in first Experiment)
+Expectation Maximization final parameters:.....................................
+
+Total number of itearations to converge: 18
+Final parameters for the each-2 Clusters
+*****************************
+Cluster-1
+Mean.......
+[-0.0063265970486444875, 0.09947411671630396]
+Covariance Matrics.........
+[0.2753952142019024, 0.30855818852363404]
+[0.30855818852363404, 0.9889275715013128]
+Probability......
+0.4902116560739031
+*****************************
+Cluster-2
+Mean.......
+[0.0060836456021007845, -0.09565415151794296]
+Covariance Matrics.........
+[1.5560901148748025, -0.29552196929102437]
+[-0.29552196929102437, 0.7895709211020477]
+Probability......
+0.5097883439260966
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX////END////XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+It took a lot of hardwork and time to prepare the Report please go through all..............Thanks.
+
+
+
+
+
+
+
+
+
+
